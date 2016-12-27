@@ -1,5 +1,5 @@
 const co = require('co');
-const request = require('request').defaults({proxy:'http://proxy.cmcc:8080'});
+const request = require('request');
 const fs = require('fs');
 const path = require('path');
 
@@ -100,4 +100,4 @@ function getAllPics(num){
 	})
 }
 
-getAllPics(1000)
+getAllPics(50)
