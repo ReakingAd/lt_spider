@@ -1,3 +1,6 @@
+/*
+* 爬虫。爬取http://www.admin5.com/browse/19/list_1.shtml的文章
+*/
 const request = require('request');
 const co      = require('co');
 const fs      = require('fs');
