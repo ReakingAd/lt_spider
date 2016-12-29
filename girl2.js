@@ -25,8 +25,6 @@ class Girl{
 			if( _this.pageNum <= _this._maxNum ){
 				_this.init();
 			}
-		}).catch( err => {
-			if(err) return console.log( '捕获错误： ' + err );
 		});
 	}
 	_getPageListUrl(){
@@ -36,10 +34,11 @@ class Girl{
 		this.url = this._getPageListUrl()
 		return new Promise( (resolve,reject) => {
 			request.get(this.url,(err,res,body) => {
-				if(err) reject(err);
-				if( res.statusCode === 200 ){
-					resolve(body);
+				if(err) {
+					console.log('in down pagelist:' + err);
+					fs.appendFileSync('err.txt','pagelist: ' + err + '\r\n');	
 				}
+				resolve(body);
 			});
 		});
 	}
@@ -69,10 +68,20 @@ class Girl{
 			return new Promise( (resolve,reject) => {
 				let postFix = path.basename(item).split('.')[1];
 				let url = 'http:' + item;
+				let _img = request(url,{timeout:3000},err => {
+					if(err){
+						console.log('error in downloading img: ' + err );
+						fs.appendFileSync('err.txt','request image ' + err + '\r\n');
+						resolve();
+					}
+				});
 
-				request(url).pipe(
+				_img.pipe(
 					fs.createWriteStream('images/' + this._folderCount + '/' + _this.count + '.' + postFix ).on('finish',err => {
-						if(err) reject(err);
+						if(err) {
+							console.log('error in pipe img: ' + err );
+							fs.appendFileSync('err.txt','in pipe' + err + '\r\n');
+						}
 						resolve();
 					})
 				)
@@ -81,6 +90,9 @@ class Girl{
 		return promises;
 	}
 }
-
-let g1 = new Girl(22220);
+process.on('uncaughtException',err => {
+	console.log('uncaught: ' + err);
+	fs.appendFileSync('err.txt','in uncaughtException: ' + err + '\r\n');
+});
+let g1 = new Girl(2289);
 g1.init();
