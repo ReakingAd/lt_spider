@@ -12,5 +12,8 @@
     "cheerio": "^0.22.0",
     "co": "^4.6.0",
     "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "iconv-lite": "^0.4.15"
   }
 }
