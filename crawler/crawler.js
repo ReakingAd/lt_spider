@@ -5,7 +5,7 @@
         1. 支持设置并发数、请求间隔。
         2. 可自动识别字符集，输出utf-8格式，避免结果乱码。（目前测试过gbk、gb2312、utf8）
         3. 可选择性输出日志文件和控制台信息
-@require  utils.js  request
+@require  lt_utils.js  request
 @param    {Number} parallel  并发数 。默认 10
 @param    {Number} defer  请求间隔 ms。默认 0ms
 @param    {Function} callback  每个请求完成的回调。可在这里对爬取的内容进行处理
@@ -34,7 +34,7 @@ c.init(urlsArr);
 'use strict';
 
 const request = require('request');
-const utils   = require('./utils');
+const lt_utils   = require('./lt_utils');
 const iconv   = require('iconv-lite');
 const fs      = require('fs');
 
@@ -114,7 +114,7 @@ class Crawler{
         // 一次并发后，如果等待数组中还有未发起的请求，则继续loop。如果等待数组已经为空，则调用done()方法
         pReqsParallel.then( result => {
             this.done_urlsArr = this.done_urlsArr.concat(on_UrlsArr);
-            if( !utils.isEmptyArr(this.wait_urlsArr) ){
+            if( !lt_utils.isEmptyArr(this.wait_urlsArr) ){
                 this.setDefer( this.loop ); 
             }
             else{
@@ -155,7 +155,7 @@ class Crawler{
                     this.shellLog('err in request: ' + err);
                     this.err_urlsArr.push(options.url);
                     if( this.log ){
-                        utils.errorLog(options.url + ' ' + err,() => {
+                        lt_utils.errorLog(options.url + ' ' + err,() => {
                             resolve();
                         });
                     }
@@ -166,7 +166,7 @@ class Crawler{
                 // 请求成功
                 else if(res.statusCode === 200){
                     if( this.forceUTF8 ){
-                        let charset = utils.getCharset(res);
+                        let charset = lt_utils.getCharset(res);
                         body = res.body = iconv.decode(body,charset);
                     }
                     this.shellLog( url + ' <<< ' + ' done');

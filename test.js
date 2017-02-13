@@ -1,11 +1,20 @@
-console.log(1); 　　
+const Crawler = require('./crawler/crawler');
 
-setTimeout(function(){
-	console.log(2); 
-},100) 　　
+let c = new Crawler({
+    parallel:10,
+    defer:1000,
+    proxy:'http://proxy.cmcc:8080',
+    log:true,
+    forceUTF8:true,
+    // encoding:null,
+    callback:function(err,res,body){
+        console.log( res.body )
+    },
+    done:function(){}
+});
 
-setTimeout(function(){ 
-	console.log(3); 
-},50) 
+let urlsArr = [
+	'http://www.reakingad.com'
+];
 
-console.log(4);
+c.init(urlsArr);
