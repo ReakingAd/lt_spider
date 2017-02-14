@@ -3,7 +3,7 @@
 @author reakingad
 @desc   爬虫爬取指定数组中的url地址。
         1. 支持设置并发数、请求间隔。
-        2. 可自动识别字符集，输出utf-8格式，避免结果乱码。（目前测试过gbk、gb2312、utf8）
+        2. 可自动识别字符集，输出utf-8格式，避免结果乱码。（目前测试过utf8、gbk、gb2312、BIG-5）
         3. 可选择性输出日志文件和控制台信息
 @require  lt_utils.js  request
 @param    {Number} parallel  并发数 。默认 10
