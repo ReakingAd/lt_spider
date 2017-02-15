@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<button id="push">push data</button>
+<button id="close">close ws</button>
+<script>
+var socket = new WebSocket('ws://127.0.0.1:8080');
+
+var _btn = document.getElementById('push');
+
+_btn.addEventListener('click',() => {
+    socket.send('xxxxxxxxxxxxxxxxxx');
+});
+
+var _btn_close = document.getElementById('close');
+_btn_close.addEventListener('click',() => {
+    socket.close();
+})
+
+socket.onopen = function(event){
+    console.log('websocket opened');
+    socket.send('abcdefghijklmnopqrstuvwxyz');
+}
+
+socket.onmessage = function(event){
+    console.log( event.data );
+}
+
+socket.onerror = function(err){
+    console.log('in error');
+    console.log(err)
+}
+
+socket.onclose = function(){
+    console.log('in close');
+}
+</script>
+</body>
+</html>
