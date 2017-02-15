@@ -51,3 +51,11 @@ ES5中用Object存储key-value键值对信息，局限是key只能是String类�
 			console.log( key );
 			console.log( value );
 		}
+
+
+
+
+
+
+
+[understanding ECMAScript6](https://leanpub.com/understandinges6/read#leanpub-auto-iterators-and-generators)

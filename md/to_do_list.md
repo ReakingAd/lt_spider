@@ -7,13 +7,30 @@
 5. 将crawler类中的delete操作改为undefined赋值，便面干扰V8优化
 6. 前端自定义事件、pubsub、nodejs的events
 6. jQuery的promise、deferred
+	- [jQuery中文文档](http://www.jquery123.com/)
+	- [learning jquery](http://learn.jquery.com/)
 6. jQuery的ajax源码
 3. undersocre.js lodash.js
+	- [undersocre源码](http://yalishizhude.github.io/tags/underscore/)
+	- [undersecro源码](http://www.html-js.com/article/Underscorejs-source-code-analysis-of-underscorejs-source-code-analysis%203031)
+	- [underscore中文文档](http://www.css88.com/doc/underscore/) 
 3. [编写restful API --廖雪峰](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014735914606943e2866257aa644b4bdfe01d26d29960b000)
 2. 百度搜索特效。“黑洞”，“旋转”，“翻转”
+3. 弄个前端学习资源列表页面。
 3. 加入ESLint
 4. https  [数字证书及CA的扫盲介绍](https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html)   [扫盲https和SSL/TLS协议](https://program-think.blogspot.com/2014/11/https-ssl-tls-0.html)
 5. vue 待办事件的webapp
 6. socket.io和chrome插件做聊天系统
+
+
+
+
+****
+#[前端学习资源](https://cnodejs.org/topic/56ef3edd532839c33a99d00e)#
+#[大量面试题](https://cnodejs.org/topic/56ef3edd532839c33a99d00e)#
+***
+
+
+
 
 

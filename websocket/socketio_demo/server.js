@@ -1,20 +1,24 @@
-// const server = require('http').createServer((req,res) => {
-//     res.writeHead(200,{'Content-Type':'text/plain'});
-//     res.end('hello');
-// });
-// const io = require('socket.io')(server);
+const app = require('http').createServer(handler);
+const io = require('socket.io')(app);
+const fs = require('fs');
 
-// io.on('connection',client => {
-//     client.on('event',data => {
-//         console.log(data);
-//     });
-//     client.on('disconnect',() => {
-//         console.log('in deisconnect');
-//     })
-// });
+app.listen(8080);
 
-// server.listen(8080);
+function handler( req,res ){
+    fs.readFile(__dirname + '/index.html',(err,data) => {
+        console.log( typeof data );
+        if(err){
+            res.writeHead(500);
+            return res.end('Error loading index.html');
+        }
+        res.writeHead(200);
+        res.end(data);
+    });
+}
 
-var io = require('socket.io')();
-io.on('connection', function(client){});
-io.listen(3000);
+io.on('connection',socket => {
+    socket.emit('news',{hello:'world'});
+    socket.on('my other event',data => {
+        console.log( data );
+    });
+});
