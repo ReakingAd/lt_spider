@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script src="http://www.reakingad.com/cdn/jquery.js"></script>
+    <script>
+    $.ajax({
+        url:'http://10.2.48.3:90',
+        method:'get',
+        data:'name=123',
+        success:function(data){
+            console.log(data);
+        }
+    })
+    </script>
+</body>
+</html>

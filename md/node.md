@@ -21,3 +21,13 @@
 10. http模块作为客户端时，默认有个并发连接数5的限制。那request模块是否也有这个限制，会不会导致我的Crawler有最大并发限制。P163。如果是的话，需要取消掉request模块的连接池管理
 11. websocket不是在http基础上建立，而是在tcp上定义的独立协议。但是ws的握手部分缺失由http完成的。这一点看起来有些让人困惑。
 12. 整站换https
+13. 响应头信息中，`Content-*`字段很关键。
+	Content-Type:text/plain
+	Content-Encoding:gzip
+	Content-Length:21170
+Content-Type告诉浏览器传输的文件的类型，浏览器好根据不同类型采取不同的处理方式。例如：`<h1>Hello</h1>`传递给浏览器时，如果Content-Type的值为text/plain，则页面上会将`<h1>Hello</h1>`以文本的形式显示出来
+。而如果Content-Type值为text/html，页面上会把`<h1>Hello</h1>`当做html代码渲染，只显示出Hello在页面上。
+要知道某个文件到底是什么type可以使用mime库，
+	
+		var mime = require('mime');
+		mime.loopup('file.txt');    // 'text/plain'

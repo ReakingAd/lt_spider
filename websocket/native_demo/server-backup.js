@@ -10,7 +10,7 @@ let app = http.createServer( (req,res) => {
 
 app.on('request',(err,data) => {
     console.log('in request event');
-    console.log( Object.keys(data) )
+    // console.log( Object.keys(data) )
 })
 
 // app.on('upgrade',(req,socket,upgradeHead) => {
