@@ -9,7 +9,8 @@
 6. jQuery的promise、deferred
 	- [jQuery中文文档](http://www.jquery123.com/)
 	- [learning jquery](http://learn.jquery.com/)
-6. jQuery的ajax源码
+6. jQuery的ajax源码 。慕课网jQuery源码
+7. chrome插件开发，删掉或者替换博客的头像，握草。（刚需）
 3. undersocre.js lodash.js
 	- [undersocre源码](http://yalishizhude.github.io/tags/underscore/)
 	- [undersecro源码](http://www.html-js.com/article/Underscorejs-source-code-analysis-of-underscorejs-source-code-analysis%203031)

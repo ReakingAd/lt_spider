@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        
+    </div>
+    <button class="btn">click</button>
+    <style>
+        .container{
+            width:100px;
+            height:100px;
+            border:1px solid red;
+        }
+    </style>
+<script src="jquery-2.1.1.js"></script>
+<script type="text/javascript">
+$(document).on('ajaxStart',function(){
+    console.log('in start.....')
+    $('.container').text('start.....');
+});
+$(document).on('ajaxComplete',function(){
+    console.log( 'in complete......' );
+});
+
+$('.btn').on('click',function(){
+    $.ajax({
+        url:'http://localhost:1999/test',
+        method:'get',
+        data:'name=xxx',
+        beforeSend:function(){
+            console.log(' before ');
+        },
+        success:function(data){
+            console.log( data );
+        },
+        complete:function(){
+            console.log('complete')
+        },
+        error:function(err){
+            console.log( 'error' );
+            console.log( err );
+        }
+    })
+})
+</script>
+</body>
+</html>
