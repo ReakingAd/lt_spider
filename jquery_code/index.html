@@ -18,34 +18,16 @@
     </style>
 <script src="jquery-2.1.1.js"></script>
 <script type="text/javascript">
-$(document).on('ajaxStart',function(){
-    console.log('in start.....')
-    $('.container').text('start.....');
+var callback = $.Callbacks();
+callback.add(function a(){
+    console.log( 'a' );
 });
-$(document).on('ajaxComplete',function(){
-    console.log( 'in complete......' );
+callback.add(function b(){
+    console.log( 'b' );
 });
 
-$('.btn').on('click',function(){
-    $.ajax({
-        url:'http://localhost:1999/test',
-        method:'get',
-        data:'name=xxx',
-        beforeSend:function(){
-            console.log(' before ');
-        },
-        success:function(data){
-            console.log( data );
-        },
-        complete:function(){
-            console.log('complete')
-        },
-        error:function(err){
-            console.log( 'error' );
-            console.log( err );
-        }
-    })
-})
+callback.fire();
+callback.fire();
 </script>
 </body>
 </html>
