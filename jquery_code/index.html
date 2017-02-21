@@ -9,6 +9,8 @@
         
     </div>
     <button class="btn">click</button>
+    <button class="btn">click</button>
+    <button class="btn2">click2</button>
     <style>
         .container{
             width:100px;
@@ -18,16 +20,17 @@
     </style>
 <script src="jquery-2.1.1.js"></script>
 <script type="text/javascript">
-var callback = $.Callbacks();
-callback.add(function a(){
-    console.log( 'a' );
-});
-callback.add(function b(){
-    console.log( 'b' );
+
+var kk = $.ajax({
+    url:'http://localhost:1999/test',
+    method:'get',
+    success:function(data,statusCode,xhr){
+        // console.log( data );
+        console.log( xhr.getAllResponseHeaders() );
+        // dtd.resolve(data);
+    }
 });
 
-callback.fire();
-callback.fire();
 </script>
 </body>
 </html>
