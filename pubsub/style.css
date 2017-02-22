@@ -74,30 +74,131 @@ div{
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     width:100%;
-    border:1px solid red;
 }
+
 .operate-section .nav-list{
     width:100%;
     height:80px;
-    border:1px solid green;
-    overflow: auto;
+    overflow:hidden;
 }
 .operate-section .content-list{
     width:100%;
     height:200px;
-    border:1px solid black;
+}
+.nav-list .nav-list-inner-wrapper{
+    height:100%;
+    white-space: nowrap;
+    height:100px;
+    padding-bottom:20px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 .nav-list ul{
-    border: 1px solid red;
     height:100%;
-    white-space: nowrap
+    white-space: nowrap;
 }
 .nav-list ul li {
     width:20%;
     height:100%;
-    border:1px solid red;
     display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #F0F0F0;
 }
-/*.nav-fabric span{
-    background:url('icons/fabric-sel.png');
-}*/
+.nav-list li span{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: 60px;
+}
+.nav-fabric span{
+    background: url('icons/fabric.png') no-repeat 50%;
+}
+.nav-collar span{
+    background: url('icons/collar.png') no-repeat 50%;
+}
+.nav-mj span{
+    background: url('icons/mj.png') no-repeat 50%;
+}
+.nav-back span{
+    background: url('icons/back.png') no-repeat 50%;
+}
+.nav-cuff span{
+    background: url('icons/cuff.png') no-repeat 50%;
+}
+.nav-pocket span{
+    background: url('icons/pocket.png') no-repeat 50%;
+}
+.nav-button span{
+    background: url('icons/button.png') no-repeat 50%;
+}
+.content-list .content-list-inner-wrapper{
+    width:100%;
+    height:220px;
+    padding-bottom:20px;
+    overflow:auto;
+    box-sizing: border-box;
+}
+.content-list .content-list-inner-wrapper ul{
+    width:100%;
+    height:100%;
+    white-space: nowrap;
+}
+.content-list-inner-wrapper ul li{
+    width:120px;
+    height:120px;
+    display:inline-block;
+    padding: 25px 10px;
+}
+.content-list-inner-wrapper ul li span{
+    background-size: 120px;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.fabric-27 span{
+    background:url('other_img/27-100x100.jpg') no-repeat 50%;
+}
+.fabric-31 span{
+    background:url('other_img/31-100x100.jpg') no-repeat 50%;
+}
+.fabric-32 span{
+    background:url('other_img/32-100x100.jpg') no-repeat 50%;
+}
+.fabric-33 span{
+    background:url('other_img/33-100x100.jpg') no-repeat 50%;
+}
+.fabric-34 span{
+    background:url('other_img/34-100x100.jpg') no-repeat 50%;
+}
+.fabric-24 span{
+    background:url('other_img/24-100x100.jpg') no-repeat 50%;
+}
+.fabric-28 span{
+    background:url('other_img/28-100x100.jpg') no-repeat 50%;
+}
+.fabric-22 span{
+    background:url('other_img/22-100x100.jpg') no-repeat 50%;
+}
+.fabric-23 span{
+    background:url('other_img/23-100x100.jpg') no-repeat 50%;
+}
+.fabric-14 span{
+    background:url('other_img/14-100x100.jpg') no-repeat 50%;
+}
+.fabric-18 span{
+    background:url('other_img/18-100x100.jpg') no-repeat 50%;
+}
+.fabric-17 span{
+    background:url('other_img/17-100x100.jpg') no-repeat 50%;
+}
+.fabric-15 span{
+    background:url('other_img/15-100x100.jpg') no-repeat 50%;
+}
+.fabric-16 span{
+    background:url('other_img/16-100x100.jpg') no-repeat 50%;
+}
+.fabric-19 span{
+    background:url('other_img/19-100x100.jpg') no-repeat 50%;
+}

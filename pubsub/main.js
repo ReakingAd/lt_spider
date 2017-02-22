@@ -1,42 +1,44 @@
-let event = {
-    client:{},
-    listen:function(event,cb){
-        if( !this.client[ event ] ){
-            this.client[ event ] = [];
+;(function(window,document,jQuery,undefined){
+
+    'use strict';
+
+    var root = window;
+    var $ = root.jQuery;
+
+    root.main = {
+        init:function(){
+            this.triggerFabric();
+            this.bindEvent();
+        },
+        triggerFabric:function(){
+            $('.content-list').on('click','li',function(){
+                var _value = $(this).data('value');
+                console.log( _value );
+
+                Event.trigger('fabric',_value);
+            });
+        },
+        mFabric:function(data){
+            var _src = 'all_new/XZ_BL_' + data + '_Z.png';
+
+            $('.fabric img').attr('src',_src);
+        },
+        mCuffs:function(data){
+            var _src = 'all_new/XZ_ZS_XT_Z_ZMXT_CX_CS_' + data + '_Z_.png';
+
+            $('.cuffs img').attr('src',_src);
+        },
+        bindEvent:function(){
+            Event.listen('fabric',this.mFabric);
+            Event.listen('fabric',this.mCuffs);
         }
-        this.client[ event ].push(cb);
-    },
-    trigger:function(event,info){
-        if( !this.client[ event ] || this.client[ event ].length === 0 ){
-            return false;
-        }
-        this.client[ event ].forEach( (item,index) => {
-            item(info);
-        });
-    },
-    remove:function(event){a
-        if( !client[ event ] ){
-            return false;
-        }
-        client[ event ] = undefined;
     }
-}
+})(window,document,jQuery);
 
-function installEvent(obj){
-    for( key in event ){
-        obj[ key ] = event[ key ];
-    }
-}
+$(document).ready(function(){
+    
+    var root = window;
+    var $ = root.jQuery;
 
-// event.listen('80p',function(info){
-//     console.log('I got the info: ' + info);
-// });
-// event.trigger('80p','总价800000');
-
-let salesOffice = {};
-
-installEvent(salesOffice);
-salesOffice.listen('90p',info => {
-    console.log('I got the info: ' + info);
+    root.main.init();
 });
-salesOffice.trigger('90p','总价=900000');
