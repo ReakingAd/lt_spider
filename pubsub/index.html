@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+<div class="pic-section">
+    <!--正面-->
+    <div id="container-front">
+        <div class="layer layer-120 mj_cover_button">
+            <img src="all_new/empty.png" alt="">
+        </div>
+        <div class="layer layer-110 button">
+            <img src="all_new/XZ_MJ_XDw_WLK_KZ_YK_CS13_Z_.png" alt="">
+        </div>
+        <div class="layer layer-100 buttonhole_thread">
+            <img src="all_new/XZ_MJ_XDw_WLK_KY_SS_Z.png" alt="">
+        </div>
+        <div class="layer layer-90 mj">
+            <img src="all_new/XZ_ZS_MJ_ZMMJ_CS_CS13_Z_.png" alt="">
+        </div>
+        <div class="layer layer-80 pocket">
+            <img src="all_new/XZ_ZS_KD_Z_ZJKD_CS_CS13_Z_.png" alt="">
+        </div>
+        <div class="layer layer-70 collar_surface">
+            <img src="all_new/empty.png" alt="">
+        </div>
+        <div class="layer layer-60 collar">
+            <img src="all_new/XZ_ZS_LZ_ZJLE_CS_CS13_Z_.png" alt="">
+        </div>
+        <div class="layer layer-50 sleeve">
+            <img src="all_new/XZ_XZ_CX_Z.png" alt="">
+        </div>
+        <div class="layer layer-40 cuffs">
+            <img src="all_new/XZ_ZS_XT_Z_ZMXT_CX_CS_CS13_Z_.png" alt="">
+        </div>
+        <!-- 前片形式不用了 -->
+        <div class="layer layer-30 qbxs">
+            <img src="all_new/empty.png" alt="">
+        </div>
+        <div class="layer layer-20 ds">
+            <img src="all_new/DS_ZM.png" alt="">
+        </div>
+        <div class="layer layer-10 fabric">
+            <img src="all_new/XZ_BL_CS13_F.png" alt="">
+        </div>
+    </div>
+    <!--背面-->
+    <div id="container-back"></div>
+</div>
+<div class="operate-section">
+    <div class="nav-list">
+        <ul>
+            <li class="nav-fabric">
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li><!--
+         --><li>
+                <span></span>
+            </li>
+        </ul>
+    </div>
+    <div class="content-list"></div>
+</div>
+<style>
+
+</style>
+<script src="pubsub.js"></script>
+<script>
+var myCallback = function(data){
+    console.log( data );
+}
+Event.listen('event1',myCallback);
+Event.trigger('event1','sdfsdfsdf');
+Event.remove('event1',myCallback);
+Event.trigger('event1','sdfsdfsdf');
+</script>
+</body>
+</html>
