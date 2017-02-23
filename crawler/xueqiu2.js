@@ -68,7 +68,6 @@ let saveDB = dataArr => {
         })
     })
 }
-let url = 'https://xueqiu.com/stock/cata/stocklist.json?page=4&size=50&order=desc&orderby=name&type=0%2C1%2C2%2C3&_=1487832684974';
 
 let init = i => {
     if( i < 195 ){

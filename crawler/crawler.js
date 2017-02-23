@@ -164,7 +164,7 @@ class Crawler{
                     }
                 }
                 // 请求成功
-                else if(res.statusCode === 200){
+                else{
                     if( this.forceUTF8 ){
                         let charset = lt_utils.getCharset(res);
                         body = res.body = iconv.decode(body,charset);
