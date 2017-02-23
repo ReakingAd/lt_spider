@@ -11,5 +11,9 @@
   "dependencies": {
     "iconv-lite": "^0.4.15",
     "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "co": "^4.6.0",
+    "mongoose": "^4.8.4"
   }
 }

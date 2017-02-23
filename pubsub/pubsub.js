@@ -7,15 +7,15 @@
         var myCallback = function(data){
             console.log( data );
         }
-        Event.listen('event1',myCallback);
-        Event.trigger('event1','sdfsdfsdf');
-        Event.remove('event1',myCallback);
-        Event.trigger('event1','sdfsdfsdf');
+        Pubsub.listen('event1',myCallback); // 订阅
+        Pubsub.trigger('event1','sdfsdfsdf'); // 发布
+        Pubsub.remove('event1',myCallback);  // 取消订阅
+        Pubsub.trigger('event1','sdfsdfsdf');
     </script>
-@ 问题1： 如果需要remove()取消订阅，则在listen()订阅的时候就不许穿入具名函数。
+@ 问题1： 如果需要remove()取消订阅，则在listen()订阅的时候就必须穿入具名函数。因为remove()函数内部是判断函数相等的方式来查找的。
 @ 问题2： 如果不同人使用，为同一个事件绑定2个回调，不幸函数名重复，则在remove()的时候，会把两个回调都取消订阅。
 */
-var Event = (function(){
+var Pubsub = (function(){
     var eContainer = {};
     var listen = function( event,cb ){
         if( !eContainer[ event ] ){

@@ -1,4 +1,6 @@
 const Crawler = require('./crawler');
+const fs = require('fs');
+const request = require('request');
 
 let c = new Crawler({
     parallel:2,
@@ -6,19 +8,36 @@ let c = new Crawler({
     proxy:'http://proxy.cmcc:8080',
     log:true,
     timeout:3000,
-    forceUTF8:true,
+    // forceUTF8:true,
+    encoding:null,
     callback:function(err,res,body,url){
-        console.log(url + ' :: ' + body.length / 1000 + 'kb');
+        let filename = url.split('fabric_thick/')[1];
+        fs.writeFileSync(filename,body.encode());
     },
     done:function(){}
 });
 let urlsArr = [
-    'http://www111.qq.com',
-    'http://www.baidu.com',
-    'http://www.reakingad.com',
-    'http://www.37zw.com/0/330/',
-    'http://www.people.com.cn/BIG5/'
+    'http://dev.3jke.cn/image/cache/catalog/xiangqingtu/fabric_thick/27-100x100.jpg'
 ];
 
-c.init(urlsArr);
+// c.init(urlsArr);
 
+let url = 'http://dev.3jke.cn/image/cache/catalog/款式图/lingzi/5290+5AL1-100x100.jpg';
+url = encodeURI(url);
+let result = url.split('/');
+let filename = result[result.length - 1];
+
+let options = {
+    url:url,
+    method:'get',
+    proxy:'http://proxy.cmcc:8080'
+}
+let _img = request(options,(err,res,body) => {
+    console.log(typeof body)
+});
+
+_img.pipe(
+    fs.createWriteStream('../pubsub/other_img/' + filename).on('finish',err => {
+        console.log( err );
+    })
+)

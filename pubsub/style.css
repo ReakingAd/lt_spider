@@ -8,6 +8,9 @@ ul,li{
     padding:0;
     margin:0;
 }
+.lt_hide{
+    display:none;
+}
 .pic-section{
     width:100%;
     height:100%;
@@ -201,4 +204,28 @@ div{
 }
 .fabric-19 span{
     background:url('other_img/19-100x100.jpg') no-repeat 50%;
+}
+.collar-49 span{
+    background:url('other_img/5AL4-100x100.jpg') no-repeat 50%;
+}
+.collar-50 span{
+    background:url('other_img/5AL2-100x100.jpg') no-repeat 50%;
+}
+.collar-155 span{
+    background:url('other_img/5AM2-100x100.jpg') no-repeat 50%;
+}
+.collar-165 span{
+    background:url('other_img/5251-100x100.jpg') no-repeat 50%;
+}
+.collar-82 span{
+    background:url('other_img/5AL1-100x100.jpg') no-repeat 50%;
+}
+.collar-83 span{
+    background:url('other_img/5290+5AL2-100x100.jpg') no-repeat 50%;
+}
+.collar-163 span{
+    background:url('other_img/5I02-100x100.jpg') no-repeat 50%;
+}
+.collar-164 span{
+    background:url('other_img/5290+5AL1-100x100.jpg') no-repeat 50%;
 }

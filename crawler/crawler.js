@@ -11,7 +11,7 @@
 @param    {Function} callback  每个请求完成的回调。可在这里对爬取的内容进行处理
 @param    {Function} done   给爬虫指派的所有任务完毕后的回调函数。
 @param    {boolean} log  是否输出错误日志文件 crawler.log。默认false 
-@param    {boolean} forceUTF8  是否自动判断网页的字符集，并转为utf-8格式输出。默认为true。如果需要buffer，则服药forceUTF8,并且encoding=null
+@param    {boolean} forceUTF8  是否自动判断网页的字符集，并转为utf-8格式输出。默认为true。如果需要buffer，则不要forceUTF8,并且encoding=null
 @param    {boolean} verbose 控制台输出详细信息。默认false
 @param    可使用其他request模块支持的属性
 @usage    
