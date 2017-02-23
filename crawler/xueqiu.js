@@ -34,8 +34,7 @@ let xueqiuSchema = mongoose.Schema({
 
 let xueqiuModel = mongoose.model('xueqiu',xueqiuSchema);
 
-let start = url => {
-    console.log( url );
+let sendRes = url => {
     return new Promise( (resolve,reject) => {
         let options = {
             url:url,
@@ -56,57 +55,57 @@ let start = url => {
     })
 }
 
-let arr = [];
-for( let i=1;i<=194;i++ ){
-    arr.push(i);
-}
-let urlArr = arr.map( item => {
-    return 'https://xueqiu.com/stock/cata/stocklist.json?page=' + item + '&size=50&order=desc&orderby=name&type=0%2C1%2C2%2C3&_=1487832684974';
-});
-// console.log( urlArr );
+let saveDB = dataArr => {
+    return new Promise( (resolve,reject) => {
+        xueqiuModel.collection.insert( dataArr,(err,docs) => {
+            if(err){
+                console.log( err );
 
-// let i = 0;
-// start(urlArr[i]).then( info => {
-//     i++;
-//     if( i < 4 ){
-//         setTimeout(start(urlArr[i]),2000)
-//     }
-//     else{
-//         console.log('ending');
-//     }
-// }).catch( err => {
-//     console.log( 'in catch: ' + err );
+            }
+            else{
+                resolve('done')
+            }
+        })
+    })
+}
+
+let init = i => {
+    if( i < 195 ){
+        let url = 'https://xueqiu.com/stock/cata/stocklist.json?page=' + i + '&size=50&order=desc&orderby=name&type=0%2C1%2C2%2C3&_=1487832684974';
+        return new Promise( (resolve,reject) => {
+            sendRes(url).then( dataArr => {
+                saveDB(dataArr).then( data => {
+                    // console.log( data );
+                    // resolve();
+                    console.log(i);
+                    i++;
+                    init(i);
+                });
+            })
+        })  
+    }
+    else{
+        console.log('done');
+    }
+}
+init(1)
+
+// let arr = [];
+// for( let i=1;i<=194;i++ ){
+//     arr.push(i);
+// }
+// let urlArr = arr.map( item => {
+//     return 'https://xueqiu.com/stock/cata/stocklist.json?page=' + item + '&size=50&order=desc&orderby=name&type=0%2C1%2C2%2C3&_=1487832684974';
 // });
 
-// start(urlArr[0]);
-process.on('uncaughtException',err => {
-    console.log( 'err in uncaugth: ' + err );
-});
-
-
-let saveIntoDB = dataArr => {
-    let promises = dataArr.forEach( (item,index) => {
-        return new Promise( (resolve,reject) => {
-            let xueqiuEntity = new xueqiuModel( item );
-            xueqiuEntity.save( err => {
-                console.log('in savvvvvvvvvvvvvvvvvvvvvv')
-                console.log( err );
-                if(err){
-                    console.log('in eeeeeeeeeeeeeeeeee');
-                    resolve( 'in save: ' + err );
-                } 
-                resolve('done');
-            })
-        });
-    });
-    return Promise.all( promises );
-}
-
-co(function* (){
-    let dataArr = yield start(urlArr[0]);
-    yield saveIntoDB(dataArr);
-});
-
-
-
-
+// let i = 0;
+// init(urlArr[i]).then( () => {
+//     i++;
+//     if( i < 5 ){
+//         console.log( i );
+//         init(urlArr[i]);
+//     }
+//     else{
+//         console.log( 'done' );
+//     }
+// });

@@ -1,9 +1,54 @@
 const Crawler = require('./crawler');
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://reakingad:Pass74123@localhost/es6',err => {
+    if(err){
+        console.log('connection err: ' + err);
+    }
+    else{
+        console.log('connection DB successful..');
+    }
+});
+
+let xueqiuSchema = mongoose.Schema({
+    "symbol":String,
+    "code":String,
+    "name":String,
+    "current":String,
+    "percent":String,
+    "change":String,
+    "high":String,
+    "low":String,
+    "high52w":String,
+    "low52w":String,
+    "marketcapital":String,
+    "amount":String,
+    "type":String,
+    "pettm":String,
+    "volume":String,
+    "hasexist":String
+});
+let xueqiuModel = mongoose.model('xueqiu',xueqiuSchema);
+let fixData = json => {
+    let _obj = JSON.parse( json );
+    let dataArr = _obj.stocks;
+    return dataArr;
+}
+let i = 1;
+let saveDB = dataArr => {
+    xueqiuModel.collection.insert(dataArr,(err,docs) => {
+        if(err) return console.log( err );
+        console.log(i++);
+        console.log( 'save done. ' );
+        // mongoose.disconnect();
+    });
+}
 
 let c = new Crawler({
     parallel:10,
     defer:1000,
-    proxy:'http://proxy.cmcc:8080',
+    // proxy:'http://proxy.cmcc:8080',
     log:true,
     forceUTF8:true,
      headers:{
@@ -11,10 +56,19 @@ let c = new Crawler({
     },
     // encoding:null,
     callback:function(err,res,body){
-        console.log( res.body )
+        let dataArr = fixData( body );
+        saveDB( dataArr );
     },
     done:function(){}
 });
 
-let urlsArr = ['https://xueqiu.com/stock/cata/stocklist.json?page=1&size=50&order=desc&orderby=name&type=0%2C1%2C2%2C3&_=1487832684974'];
+let urlsArr = [];
+for(let i=1;i<=195;i++){
+    let url = 'https://xueqiu.com/stock/cata/stocklist.json?page=' + i + '&size=50&order=desc&orderby=name&type=0%2C1%2C2%2C3&_=1487832684974';
+    urlsArr.push(url)
+}
 c.init(urlsArr);
+
+process.on('uncaughtException',err => {
+    console.log('in uncaught: ' + err)
+})

@@ -15,6 +15,7 @@
 @param    {boolean} verbose 控制台输出详细信息。默认false
 @param    可使用其他request模块支持的属性
 @usage    
+const Crawler = require('./crawler');
 let c = new Crawler({
     parallel:10,
     defer:1000,
@@ -22,21 +23,25 @@ let c = new Crawler({
     log:true,
     forceUTF8:true,
     // encoding:null,
-    callback:function(err,res,body){
+    callback:function(err,res,body,url){
         console.log( res.body )
     },
     done:function(){}
 });
 
 c.init(urlsArr);
+
+@待完善： 怎样添加上IO队列。最终效果是，request可以控制并发和时间间隔。所有完成的request的结果，放在一个队列中等待IO操作，
+        这个IO队列也需要可控并发数，并且接受用户自定义的IO函数。
+EventEmitter使用事件？
 */
 
 'use strict';
 
-const request = require('request');
-const lt_utils   = require('./lt_utils');
-const iconv   = require('iconv-lite');
-const fs      = require('fs');
+const request  = require('request');
+const lt_utils = require('./lt_utils');
+const iconv    = require('iconv-lite');
+const fs       = require('fs');
 
 class Crawler{
     constructor(options){
@@ -75,7 +80,7 @@ class Crawler{
             this.loop();
         })
     }
-    // 穿件日志文件夹
+    // 创建日志文件夹
     createLogDir(){
         return new Promise( (resolve,reject) => {
             if( this.log ){
@@ -91,7 +96,7 @@ class Crawler{
             }
         });
     }
-    // 检查几个爬虫参数师傅符合要求
+    // 检查几个爬虫参数是否符合要求
     checkParams(){
         this.parallel = parseInt( this.parallel );
         if( isNaN(this.parallel) ){
@@ -185,6 +190,9 @@ class Crawler{
         let _success = this.total - _err;
 
         console.log('total ' + _total + ',' + 'success ' + _success + ', ' + 'failed ' + _err);
+        if( _err > 0 && this.log ){
+            console.log('错误信息请查看：/crawler/crawler.log');
+        }
     }
     // 替代console.log 。当配置了verbose:true时，控制台输出信息
     shellLog(msg){
