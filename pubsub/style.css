@@ -25,6 +25,12 @@ ul,li{
     /*border:1px solid #ccc;*/
     margin:0 auto;
 }
+#container-back{
+    width:100%;
+    height:100%;
+    /*border:1px solid #ccc;*/
+    margin:0 auto;
+}
 .layer{
     position:absolute;
     left:0;
@@ -113,28 +119,49 @@ div{
     display: block;
     width: 100%;
     height: 100%;
-    background-size: 60px;
+    background-size: 60px!important;
 }
 .nav-fabric span{
     background: url('icons/fabric.png') no-repeat 50%;
 }
+.nav-fabric.nav-sel span{
+    background: url('icons/fabric-sel.png') no-repeat 50%;
+}
 .nav-collar span{
     background: url('icons/collar.png') no-repeat 50%;
+}
+.nav-collar.nav-sel span{
+    background: url('icons/collar-sel.png') no-repeat 50%;
 }
 .nav-mj span{
     background: url('icons/mj.png') no-repeat 50%;
 }
-.nav-back span{
+.nav-mj.nav-sel span{
+    background: url('icons/mj-sel.png') no-repeat 50%;
+}
+.nav-hb span{
     background: url('icons/back.png') no-repeat 50%;
 }
-.nav-cuff span{
+.nav-hb.nav-sel span{
+    background: url('icons/back-sel.png') no-repeat 50%;
+}
+.nav-cuffs span{
     background: url('icons/cuff.png') no-repeat 50%;
+}
+.nav-cuffs.nav-sel span{
+    background: url('icons/cuff-sel.png') no-repeat 50%;
 }
 .nav-pocket span{
     background: url('icons/pocket.png') no-repeat 50%;
 }
+.nav-pocket.nav-sel span{
+    background: url('icons/pocket-sel.png') no-repeat 50%;
+}
 .nav-button span{
     background: url('icons/button.png') no-repeat 50%;
+}
+.nav-button.nav-sel span{
+    background: url('icons/button-sel.png') no-repeat 50%;
 }
 .content-list .content-list-inner-wrapper{
     width:100%;
@@ -228,4 +255,104 @@ div{
 }
 .collar-164 span{
     background:url('other_img/5290+5AL1-100x100.jpg') no-repeat 50%;
+}
+.mj-65 span{
+    background:url('other_img/520Q-100x100.jpg') no-repeat 50%;
+}
+.mj-66 span{
+    background:url('other_img/518B-100x100.jpg') no-repeat 50%;
+}
+.mj-89 span{
+    background:url('other_img/5103-100x100.jpg') no-repeat 50%;
+}
+
+.opt-btn{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 20px;
+    top: -120px;
+}
+.btn-turn-back{
+    width: 100%;
+    height: 100%;
+    background:url('./other_img/rotate.png') no-repeat;
+    background-size:100px;
+    border:none;
+}
+.mj-95 span{
+    background:url('other_img/5141-100x100.jpg') no-repeat 50%;
+}
+.mj-94 span{
+    background:url('other_img/5144-100x100.jpg') no-repeat 50%;
+}
+.mj-93 span{
+    background:url('other_img/5140-100x100.jpg') no-repeat 50%;
+}
+.mj-333 span{
+    background:url('other_img/5782-100x100.jpg') no-repeat 50%;
+}
+.cuffs-61 span{
+    background:url('other_img/5410-100x100.jpg') no-repeat 50%;
+}
+.cuffs-156 span{
+    background:url('other_img/5430-100x100.jpg') no-repeat 50%;
+}
+.cuffs-157 span{
+    background:url('other_img/5400-100x100.jpg') no-repeat 50%;
+}
+.cuffs-62 span{
+    background:url('other_img/545J-100x100.jpg') no-repeat 50%;
+}
+.cuffs-166 span{
+    background:url('other_img/5432-100x100.jpg') no-repeat 50%;
+}
+.cuffs-96 span{
+    background:url('other_img/545E-100x100.jpg') no-repeat 50%;
+}
+.cuffs-167 span{
+    background:url('other_img/5408-100x100.jpg') no-repeat 50%;
+}
+.pocket-144 span{
+    background:url('other_img/wu-100x100.jpg') no-repeat 50%;
+}
+.pocket-103 span{
+    background:url('other_img/5340-100x100.jpg') no-repeat 50%;
+}
+.pocket-102 span{
+    background:url('other_img/5323-100x100.jpg') no-repeat 50%;
+}
+.pocket-158 span{
+    background:url('other_img/5300-100x100.jpg') no-repeat 50%;
+}
+.pocket-101 span{
+    background:url('other_img/5312-100x100.jpg') no-repeat 50%;
+}
+.pocket-168 span{
+    background:url('other_img/5317-100x100.jpg') no-repeat 50%;
+}
+
+.button-55 span{
+    background:url('other_img/kouzi-100x100.jpg') no-repeat 50%;
+}
+.button-223 span{
+    background:url('other_img/4-100x100.jpg') no-repeat 50%;
+}
+.button-245 span{
+    background:url('other_img/6-100x100.jpg') no-repeat 50%;
+}
+.button-160 span{
+    background:url('other_img/12-100x100.jpg') no-repeat 50%;
+}
+.button-161 span{
+    background:url('other_img/13-100x100.jpg') no-repeat 50%;
+}
+.button-211 span{
+    background:url('other_img/kouzi14-100x100.jpg') no-repeat 50%;
+}
+.button-56 span{
+    background:url('other_img/10-100x100.jpg') no-repeat 50%;
+}
+.button-159 span{
+    background:url('other_img/11-100x100.jpg') no-repeat 50%;
 }
