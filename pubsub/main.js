@@ -10,16 +10,16 @@
             fabric:{
                 front:{
                     type:'CS',
-                    value:'CS13'
+                    value:'CS5'
                 },
                 back:{
                     type:'CS',
-                    value:'CS13'
+                    value:'CS5'
                 }
             },
             collar:{
                 front:{
-                    value:'ZJLE'
+                    value:'XFLG'
                 },
                 back:{
                     value:''
@@ -43,15 +43,15 @@
             },
             cuffs:{
                 front:{
-                    value:'FS2Y'
+                    value:'YJ1Y'
                 },
                 back:{
-                    value:'FS2Y'
+                    value:'YJ1Y'
                 }
             },
             pocket:{
                 front:{
-                    value:'ZJKD'
+                    value:'empty'
                 },
                 back:{
                     value:''
@@ -59,11 +59,11 @@
             },
             button:{
                 front:{
-                    color:'CS13',
+                    color:'CS5',
                     value:'YK'
                 },
                 back:{
-                    color:'CS13',
+                    color:'CS5',
                     value:'YK'
                 }
             }
@@ -76,13 +76,15 @@
         },
         bindClick:function(){
             var _this = this;
-            
+
             $('.content-list-inner-wrapper').on('click','ul li',function(){
                 var $this       = $(this);
                 var _category   = $this.parent().data('category');
                 var _value      = $this.data('value');
                 var _selections = _this.selections;
 
+                $this.siblings().removeClass('content-sel');
+                $this.addClass('content-sel');
                 // 如果是布料，则多设置一下“类型”属性。（纯色、条纹、格子）
                 if( _category === 'fabric' ){
                     var _type = _value.replace(/\d/g,'');
