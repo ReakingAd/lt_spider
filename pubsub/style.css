@@ -128,7 +128,7 @@ div{
     white-space: nowrap;
 }
 .nav-list ul li {
-    width:20%;
+    width:14.286%;
     height:100%;
     display: inline-block;
     -webkit-box-sizing: border-box;
