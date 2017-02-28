@@ -37,7 +37,8 @@ jQuery。ajax设置cache:false则始终不适用缓存，而是想服务器发�
 	304，意思就是告诉浏览器这个css文件从第一次请求到第二次请求之间这段时间，并没有改变。因此你使用浏览器自己的本地缓存的版本就可以。浏览器接受到这个304response后，就去本地缓存目录读取css文件，给浏览器渲染时使用，而不是再去服务器下载css文件。
 
 	这两对字段的区别？貌似静态文件css、js、img、都有这两对字段。而对后端渲染页面接口的请求只有Etag那一对。
-3. 1
+3. ajax缓存，应该只针对get请求会有缓存吧？就像加载静态资源的get请求似的。[weibo缓存](http://weibo.com/roguestyle/profile?rightmod=1&wvr=6&mod=personnumber&is_all=1&is_search=1&key_word=%E7%BC%93%E5%AD%98#_0)
+   默认会使用ajax缓存。
 4. 1
 5.
 问题：视频网站视频的缓存时怎么搞得？ 
