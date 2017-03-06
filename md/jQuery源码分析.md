@@ -25,3 +25,6 @@ ajax请求的缓存只能用于get方式？post方式不能缓存？
 使用localstorage手动缓存？
 
 
+#Promise#
+[深入理解jQuery、Angular、node中的Promise](http://www.cnblogs.com/stoneniqiu/p/5798661.html)
+
