@@ -51,3 +51,11 @@
 ****
 [node并发测试框架](https://github.com/mcollina/autocannon)
 
+****
+
+- isNaN()到底是啥规则？
+
+	isNaN('010-23232323')  // true
+	isNaN(010-232323233)   // false
+	isNaN( NaN ) // true
+- 验证手机、固话。验证不能含有空格
