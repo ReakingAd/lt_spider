@@ -59,3 +59,8 @@
 	isNaN(010-232323233)   // false
 	isNaN( NaN ) // true
 - 验证手机、固话。验证不能含有空格
+
+
+#blog参考#
+
+[包子](https://520baozi.com/z)
