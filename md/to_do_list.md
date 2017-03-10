@@ -70,4 +70,12 @@ footer：诺贝尔奖得主、时代周刊封面人物、
 
 音乐播放那个按钮，找回来
 
-1to2需要多做一层呢判断
+take me to shanghai 伴奏
+
+滑动到最下边，加载另外三篇
+自己做个cnzz？？？
+
+jquery promise api 用在show页面。
+[SEO攻略一](http://www.duanliang920.com/learn/SEO/al/308.html)
+
+yangjiajia180
