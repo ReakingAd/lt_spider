@@ -1,10 +1,5 @@
 **任务列表**
- 
-1. ______爬虫的编码问题。 [参考](https://cnodejs.org/topic/5898199526aaf5da084b038d) 
-2. ______解构赋值被删了
-3. ______自己写一个爬虫类。实现一个任务队列，promise generator，可以供爬虫使用
-4. ______node-crawler爬虫框架是怎么解决字符编码问题的。是怎么设置队列、并发的？[nodejs爬虫-cnode社区-i5ting](https://cnodejs.org/topic/57c529cf9b447b634391c814)
-5. ______将crawler类中的delete操作改为undefined赋值，便面干扰V8优化
+
 6. 前端自定义事件、pubsub、nodejs的events
 6. jQuery的promise、deferred
 	- [jQuery中文文档](http://www.jquery123.com/)
@@ -19,7 +14,6 @@
 2. 百度搜索特效。“黑洞”，“旋转”，“翻转”
 3. 弄个前端学习资源列表页面。
 3. 加入ESLint
-4. https  [数字证书及CA的扫盲介绍](https://program-think.blogspot.com/2010/02/introduce-digital-certificate-and-ca.html)   [扫盲https和SSL/TLS协议](https://program-think.blogspot.com/2014/11/https-ssl-tls-0.html)
 5. vue 待办事件的webapp
 6. vue 重写衬衫页？可否用websocket优化加载，至少用上ajax分布加载。
 6. socket.io和chrome插件做聊天系统。我的demo中后去ip有问题，查查。添加emoji表情。
@@ -63,7 +57,6 @@
 
 #blog参考#
 
-[包子](https://520baozi.com/z)
 
 footer：诺贝尔奖得主、时代周刊封面人物、
 “终将变成我们讨厌的人”“我讨厌有钱人。”
@@ -72,10 +65,24 @@ footer：诺贝尔奖得主、时代周刊封面人物、
 
 take me to shanghai 伴奏
 
-滑动到最下边，加载另外三篇
-自己做个cnzz？？？
-
 jquery promise api 用在show页面。
-[SEO攻略一](http://www.duanliang920.com/learn/SEO/al/308.html)
+#好文章#
 
-yangjiajia180
+- [SEO攻略一](http://www.duanliang920.com/learn/SEO/al/308.html)
+- [ajax全接触](https://segmentfault.com/a/1190000008697448?share_user=1030000008431166&utm_source=Weibo&utm_medium=shareLink&utm_campaign=socialShare&from=singlemessage&isappinstalled=0)
+
+
+websocekt聊天室，局域网内ip相同，因此按ip不行。按mac地址？？php怎么获取
+
+
+2. [react.js阮一峰](http://www.ruanyifeng.com/blog/2015/03/react.html)
+
+
+#网页游戏：#
+
+1. [扫雷](http://minesweeperfus.zizisoft.com/)
+
+
+[腾讯面试：0-9999一万个数字中有多少个数字7](http://www.dodobook.net/linux/3339)
+
+使用一下ltAlert()啊，在页面上
