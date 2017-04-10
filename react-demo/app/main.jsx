@@ -1,42 +1,18 @@
 import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
 
-class CustomTextInput extends Component{
-    constructor( props ){
-        super(props);
-        this.focus = this.focus.bind(this);
-    }
-
-    focus(){
-        this.textInput.focus();
-    }
-
+class Joke extends Component{
     render(){
         return (
             <div>
-                <input 
-                    type="text"
-                    ref={ input => { this.textInput = input; } } />
-                
+                <p>“北京房产增值效果好吗？”“挺好的。有一套房子售价800万。中介帮着买家砍价砍了16小时，最后830万成交”</p>
             </div>
         )
     }
 }
 
-class AutoFocusTextInput extends Component{
-    componentDidMount(){
-        this.textInput.focus();
-    }
-    render(){
-        return (
-            <CustomTextInput
-                ref={ input => {this.textInput = input} } />
-        )
-    }
-}
-
 ReactDOM.render(
-    <CustomTextInput person='xxxxxxxx1' />,
+    <Joke />,
     document.getElementById('foo')
 );
 

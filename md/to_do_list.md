@@ -30,7 +30,6 @@
 
 
 ****
-#[前端学习资源](https://cnodejs.org/topic/56ef3edd532839c33a99d00e)#
 #[大量面试题](https://cnodejs.org/topic/56ef3edd532839c33a99d00e)#
 ***
 
@@ -56,7 +55,7 @@
 
 
 #blog参考#
-
+[svgtrick](http://svgtrick.com/)
 
 footer：诺贝尔奖得主、时代周刊封面人物、
 “终将变成我们讨厌的人”“我讨厌有钱人。”
@@ -74,10 +73,6 @@ jquery promise api 用在show页面。
 
 websocekt聊天室，局域网内ip相同，因此按ip不行。按mac地址？？php怎么获取
 
-
-2. [react.js阮一峰](http://www.ruanyifeng.com/blog/2015/03/react.html)
-
-
 #网页游戏：#
 
 1. [扫雷](http://minesweeperfus.zizisoft.com/)
@@ -93,3 +88,5 @@ websocekt聊天室，局域网内ip相同，因此按ip不行。按mac地址？�
 2. react =>todolist
 3. 段子推送
 4. game桃花岛
+
+[css3动画](https://www.kuaishou.com/kwai-live.html)
