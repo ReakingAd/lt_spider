@@ -34,7 +34,7 @@ function calcCoord(num){
  * @param {Array} arr 
  * @param {Number} num 
  */
-function ltArrCheck(arr,num){
+function arrCheck(arr,num){
     if( !(arr instanceof Array) ){
         console.warn('wrong param');
         return false;
@@ -57,4 +57,4 @@ function ltArrCheck(arr,num){
     return count;
 }
 
-export default {calcNum,calcCoord,ltArrCheck};
+export default {calcNum,calcCoord,arrCheck};

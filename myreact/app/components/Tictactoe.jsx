@@ -1,46 +1,72 @@
 import React,{ Component } from 'react';
 import Grid from './Grid.jsx';
-import MyUtils from './MyUtils.jsx';
-// import Litaotest from './Litaotest.jsx';
+import Utils from './Utils.js';
 import Chessbtns from './Chessbtns.jsx';
+import Pubsub from './Pubsub.js';
 
 class Tictactoe extends Component{
     constructor(props){
         super(props);
+        this.init();
         this.handlePlayerStep = this.handlePlayerStep.bind(this);
         this.botAction     = this.botAction.bind(this);
         this.judgeResult   = this.judgeResult.bind(this);
         this.restartChess = this.restartChess.bind(this);
         this.state = {
             gridStatus:['blank','blank','blank','blank','blank','blank','blank','blank','blank'],
-            winner:''
+            winner:'',
+            waitingFor:'x'
         }
+    }
+    init(){
+        Pubsub.listen('xDone',() => {
+            this.judgeResult();
+        });
+        Pubsub.listen('judgeDone',() => {
+            if( !this.state.winner ){
+                if( this.state.waitingFor === 'o' ){
+                    this.botAction();
+                }
+            }
+        });
+        Pubsub.listen('oDone',() => {
+            this.judgeResult();
+        })
     }
     restartChess(){
         this.setState({
             gridStatus:['blank','blank','blank','blank','blank','blank','blank','blank','blank'],
-            winner:''
+            winner:'',
+            waitingFor:'x'
         })
     }
     handlePlayerStep(clickedKey){
-        let _num = MyUtils.calcNum(clickedKey);
+        let _num = Utils.calcNum(clickedKey);
 
         this.state.gridStatus[ _num - 1 ] = 'x'
         this.setState({
-            gridStatus:this.state.gridStatus
+            gridStatus:this.state.gridStatus,
+            waitingFor:'o'
+        },() => {
+            Pubsub.trigger('xDone');
         })
-        this.judgeResult();
-        this.botAction();
-        this.judgeResult();
     }
     botAction(){
-        for( let item of this.state.gridStatus ){
+        let _gridStatus = this.state.gridStatus;
+
+        for( let item of _gridStatus ){
             if( item === 'blank' ){
-                let index = this.state.gridStatus.indexOf( item );
-                this.state.gridStatus[ index ] = 'o';
+                let index = _gridStatus.indexOf( item );
+                _gridStatus[ index ] = 'o';
                 break;
             }
         }
+        this.setState({
+            gridStatus:_gridStatus,
+            waitingFor:'x'
+        },() => {
+            Pubsub.trigger('oDone');
+        })
     }
     /**
      * @desc 判断胜负结果。
@@ -53,11 +79,11 @@ class Tictactoe extends Component{
 
         this.state.gridStatus.forEach( (item,index) => {
             if( item === 'x' ){
-                xCoord.push( MyUtils.calcCoord(index + 1) );
+                xCoord.push( Utils.calcCoord(index + 1) );
                 xNum.push( index + 1 );
             }
             if( item === 'o' ){
-                oCoord.push( MyUtils.calcCoord(index + 1) );
+                oCoord.push( Utils.calcCoord(index + 1) );
                 oNum.push( index + 1 );
             }
         })
@@ -72,15 +98,17 @@ class Tictactoe extends Component{
             xAixsOfO.push( item[ 0 ] );
             yAixsOfO.push( item[ 1 ] );
         })
-        if( MyUtils.ltArrCheck(xAixsOfX,1) >= 3 || MyUtils.ltArrCheck(xAixsOfX,2) >= 3 || MyUtils.ltArrCheck(xAixsOfX,3) >= 3 ||
-            MyUtils.ltArrCheck(yAixsOfX,1) >= 3 || MyUtils.ltArrCheck(yAixsOfX,2) >= 3 || MyUtils.ltArrCheck(yAixsOfX,3) >= 3 ){
+        if( Utils.arrCheck(xAixsOfX,1) >= 3 || Utils.arrCheck(xAixsOfX,2) >= 3 || Utils.arrCheck(xAixsOfX,3) >= 3 ||
+            Utils.arrCheck(yAixsOfX,1) >= 3 || Utils.arrCheck(yAixsOfX,2) >= 3 || Utils.arrCheck(yAixsOfX,3) >= 3 ){
                 this.setState({
                     winner:'x'
-                })
+                },() => {
+                    Pubsub.trigger('judgeDone');
+                });
                 return;
             }
-        if( MyUtils.ltArrCheck(xAixsOfO,1) >= 3 || MyUtils.ltArrCheck(xAixsOfO,2) >= 3 || MyUtils.ltArrCheck(xAixsOfO,3) >= 3 ||
-            MyUtils.ltArrCheck(yAixsOfO,1) >= 3 || MyUtils.ltArrCheck(yAixsOfO,2) >= 3 || MyUtils.ltArrCheck(yAixsOfO,3) >= 3 ){
+        if( Utils.arrCheck(xAixsOfO,1) >= 3 || Utils.arrCheck(xAixsOfO,2) >= 3 || Utils.arrCheck(xAixsOfO,3) >= 3 ||
+            Utils.arrCheck(yAixsOfO,1) >= 3 || Utils.arrCheck(yAixsOfO,2) >= 3 || Utils.arrCheck(yAixsOfO,3) >= 3 ){
                 this.setState({
                     winner:'o'
                 });
@@ -91,6 +119,8 @@ class Tictactoe extends Component{
             || xNum.indexOf(3) !== -1 && xNum.indexOf(5) !== -1 && xNum.indexOf(7) !== -1 ){
             this.setState({
                 winner:'x'
+            },() => {
+                Pubsub.trigger('judgeDone');
             });
             return;
         }
@@ -98,6 +128,8 @@ class Tictactoe extends Component{
             || oNum.indexOf(3) !== -1 && oNum.indexOf(5) !== -1 && oNum.indexOf(7) !== -1 ){
             this.setState({
                 winner:'o'
+            },() => {
+                Pubsub.trigger('judgeDone');
             });
             return;
         }
@@ -106,19 +138,24 @@ class Tictactoe extends Component{
             // 平局
             this.setState({
                 winner:'draw'
+            },() => {
+                Pubsub.trigger('judgeDone');
             })
         }
+        Pubsub.trigger('judgeDone');
     }
     
     render(){
         let grids = this.state.gridStatus.map( (item,index) => {
             return <Grid key={index.toString()} gridNum={index.toString()} handlePlayerStep={this.handlePlayerStep} gridStatus={item}
-                    coordArr={MyUtils.calcCoord(index + 1)} winner={this.state.winner} />
+                    coordArr={Utils.calcCoord(index + 1)} winner={this.state.winner} />
         });
 
         return (
-            <div className="grid-container">
-                {grids}
+            <div className="tictactoe-container">
+                <div className="grid-container">
+                    {grids}
+                </div>
                 <Chessbtns winner={this.state.winner} restartChess={this.restartChess}/>
             </div>
         )
