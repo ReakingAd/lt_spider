@@ -1,9 +1,9 @@
-import React,{Component} from 'react';
+import React,{ Component } from 'react';
 import ReactDom from 'react-dom';
 import Header from './components/Header.jsx';
 import Clock from './components/clock.jsx';
 import Calculator from './components/Calculator.jsx';
-import Tictactoe from './components/Tictactoe.jsx';
+import Tictactoe from './components/tictactoe/Tictactoe.jsx';
 
 class Main extends Component{
     constructor(props){
