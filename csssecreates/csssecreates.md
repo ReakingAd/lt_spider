@@ -1,4 +1,4 @@
-##未处理的问题##
+#未处理的问题#
 
 1. 响应式布局的原理。例如banner变下拉（参考，bootstrap、Yii2默认首页）
 2. 自适应的正方形
@@ -8,7 +8,7 @@
 6. 闭包中带有setTimeout().setTimeout的异步易错点
 7. 无序去重数组去n个数，其和为m。计算时间空间的复杂度
 
-##预备知识##
+#预备知识#
 
 1. 外边距重叠的现象、原因、解决方法。 [参考](https://www.zhihu.com/question/19823139)
 2. BFC是什么的缩写   [参考](https://www.zhihu.com/question/19823139)
@@ -43,7 +43,7 @@
 
 
 
-##0427##
+#0427#
 
 1. rgba 
 	
@@ -59,3 +59,12 @@
 	a=alpha 透明度  0 - 1  
 
 3. 半透明边框，需要利用background-clip:padding-box;
+
+# 0428 #
+
+问题：
+1. 源生的observer的方法名是什么？Object.defineProperty(),这个方法可以做到setter监听
+2. css3 transition动画做轮播图，怎么实现循环播放？
+3. 信封、优惠券边框效果。蚂蚁行军的选中效果。P49
+
+http://www.360doc.com/content/14/1016/13/2792772_417403574.shtml
